@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		AC4C03742E10A83D00E4BD08 /* Favorites */ = {
+		5E47EEEC2F7213D600E89DC7 /* Favorites */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Favorites;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		AC4C03692E10A83D00E4BD08 = {
 			isa = PBXGroup;
 			children = (
-				AC4C03742E10A83D00E4BD08 /* Favorites */,
+				5E47EEEC2F7213D600E89DC7 /* Favorites */,
 				AC4C03732E10A83D00E4BD08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				AC4C03742E10A83D00E4BD08 /* Favorites */,
+				5E47EEEC2F7213D600E89DC7 /* Favorites */,
 			);
 			name = Favorites;
 			packageProductDependencies = (
