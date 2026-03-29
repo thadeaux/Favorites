@@ -28,6 +28,7 @@ struct HobbyRowView: View {
             }
         }
     }
+
 }
 
 #Preview {

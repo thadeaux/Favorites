@@ -46,4 +46,5 @@ struct CityCardView: View {
 
 #Preview {
     CityCardView(city: CityModel(id: 1, cityName: "Amsterdam", cityImage: "amsterdam", isFavorite: false))
+
 }
