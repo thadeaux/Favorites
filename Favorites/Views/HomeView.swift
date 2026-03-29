@@ -21,7 +21,6 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 Picker("Categories", selection: $selectedCategory) {
                     ForEach(ContentCategory.allCases, id: \.self) {
@@ -35,22 +34,22 @@ struct HomeView: View {
             }
             .navigationTitle("Browse")
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $searchText, prompt: "Search \(selectedCategory.rawValue)")
-            
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search \(selectedCategory.rawValue)")
         }
     }
     @ViewBuilder
     private func selectedContentView() -> some View {
         if selectedCategory == .cities {
-            Text("Cities")
+            CitiesView(searchText: $searchText)
         } else if selectedCategory == .hobbies {
-            Text("Hobbies")
+            HobbiesView(searchText: $searchText)
         } else {
-            Text("Books")
+            BooksView(searchText: $searchText)
         }
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(FavoritesViewModel())
 }

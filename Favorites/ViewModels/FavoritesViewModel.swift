@@ -14,9 +14,64 @@ class FavoritesViewModel : ObservableObject {
     @Published var hobbies: [HobbyModel] = sampleHobbies
     @Published var books: [BookModel] = sampleBooks
     
+    private let cityManager = CategoryManager<CityModel>(storageKey: "favoriteCities")
+    private let hobbyManager = CategoryManager<HobbyModel>(storageKey: "favoriteHobbies")
+    private let bookManager = CategoryManager<BookModel>(storageKey: "favoriteBooks")
+    
+    init() {
+        cities = cityManager.initializeFavorites(items: sampleCities)
+        hobbies = hobbyManager.initializeFavorites(items: sampleHobbies)
+        books = bookManager.initializeFavorites(items: sampleBooks)
+    }
+    
+    func filteredCities(searchText: String) -> [CityModel] {
+        cityManager.filteredItems(items: cities, searchText: searchText)
+    }
     
     
+    func filteredHobbies(searchText: String) -> [HobbyModel] {
+        hobbyManager.filteredItems(items: hobbies, searchText: searchText)
+    }
     
+    func filteredBooks(searchText: String) -> [BookModel] {
+        bookManager.filteredItems(items: books, searchText: searchText)
+    }
+    
+    func toggleFavoriteCity(city: CityModel) {
+        cityManager.toggleFavorites(items: &cities, targetItem: city)
+    }
+    
+    func toggleFavoriteHobby(hobby: HobbyModel) {
+        hobbyManager.toggleFavorites(items: &hobbies, targetItem: hobby)
+    }
+    
+    func toggleFavoriteBook(book: BookModel) {
+        bookManager.toggleFavorites(items: &books, targetItem: book)
+    }
+    
+    func filteredFavoriteCities() -> [CityModel] {
+        cityManager.filteredFavoriteItems(items: cities, flag: true)
+    }
+    
+    func filteredFavoriteHobbies() -> [HobbyModel] {
+        hobbyManager.filteredFavoriteItems(items: hobbies, flag: true)
+    }
+    
+    func filteredFavoriteBooks() -> [BookModel] {
+        bookManager.filteredFavoriteItems(items: books, flag: true)
+    }
+    
+    func clearAllFavorites() {
+        cityManager.clearFavorites(items: &cities)
+        hobbyManager.clearFavorites(items: &hobbies)
+        bookManager.clearFavorites(items: &books)
+    }
+    
+    func listFavorites() {
+        cities = cityManager.listFavorites(items: sampleCities)
+        hobbies = hobbyManager.listFavorites(items: sampleHobbies)
+        books = bookManager.listFavorites(items: sampleBooks)
+    }
 }
 
 
